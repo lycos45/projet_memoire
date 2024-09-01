@@ -675,24 +675,25 @@ def main():
                 selected_category = st.selectbox(f'Sélectionnez la catégorie pour {var}', categories)
                 input_data[var] = selected_category
 
-        # Créer un DataFrame avec les inputs
-        input_df = pd.DataFrame([input_data])
+        # Bouton pour déclencher la prédiction
+        if st.button('Calculer la Prédiction'):
+            # Créer un DataFrame avec les inputs
+            input_df = pd.DataFrame([input_data])
 
-        # Ajouter les colonnes manquantes avec des valeurs par défaut
-        for col in x.columns:
-            if col not in input_df.columns:
-                input_df[col] = np.nan
+            # Ajouter les colonnes manquantes avec des valeurs par défaut
+            for col in x.columns:
+                if col not in input_df.columns:
+                    input_df[col] = np.nan
 
-        # S'assurer que les colonnes sont dans le même ordre que x
-        input_df = input_df[x.columns]
+            # S'assurer que les colonnes sont dans le même ordre que x
+            input_df = input_df[x.columns]
 
-        # Normaliser les données numériques
-        scaled_input_df = input_df.copy()
-        scaled_input_df[numeric_vars] = scaler.transform(input_df[numeric_vars].fillna(0))
+            # Normaliser les données numériques
+            scaled_input_df = input_df.copy()
+            scaled_input_df[numeric_vars] = scaler.transform(input_df[numeric_vars].fillna(0))
 
-        # Faire la prédiction
-        prediction = best_model.predict(scaled_input_df)
-        st.write(f'Prédiction du rendement : {prediction[0]:.2f}')
-
+            # Faire la prédiction
+            prediction = best_model.predict(scaled_input_df)
+            st.write(f'Prédiction du rendement : {prediction[0]:.2f}')
 if __name__ == "__main__":
     main()
