@@ -22,7 +22,7 @@ from PIL import Image
 import streamlit as st
 from io import BytesIO
 import base64
-#@st.cache_data
+@st.cache_data
 def wrangle(filepath):
     #read csv
     df= pd.read_csv(filepath,sep=';', na_values=["", " ", "  ", "   ", "    ", np.nan], low_memory=False)
@@ -289,7 +289,7 @@ results = pd.DataFrame({
 
 # Afficher les résultats
 print(results)
-#@st.cache_resource
+@st.cache_resource
 def get_model_and_scaler():
     scaler = StandardScaler()
     best_params = {
@@ -322,26 +322,26 @@ def main():
     numeric_vars = ['superficie_parcelle', 'quantite_semence_CP', 'quantite_CP']  # Ajuster en fonction de tes variables numériques
     categorical_vars = ['id_reg',
     'culture_principale',
-    'irrigation',
+    #'irrigation',
     'rotation_cultures',
     'culture_principale_précédente_2020_2021',
     'méthode_de_culture',
     'mois_semis_CP',
     'semaine_semis_CP',
     'etat_produit_CP',
-    'mois_previsionnel_recolte_CP',
-    'utilisation_matiere_org_avant_semis',
-    'utilisation_matiere_miner_avant_semis',
+    #'mois_previsionnel_recolte_CP',
+    #'utilisation_matiere_org_avant_semis',
+    #'utilisation_matiere_miner_avant_semis',
     'utilisation_produits_phytosanitaires',
-    'utilisation_residus_alimentation_animaux',
-    'type_labour',
-    'type_couverture_sol_interculture',
+    #'utilisation_residus_alimentation_animaux',
+    #'type_labour',
+    #'type_couverture_sol_interculture',
     'type_installation',
     'type_materiel_preparation_sol',
     'type_materiel_semis',
     'type_materiel_entretien_sol',
-    'type_materiel_récolte',
-    'production_forestiere_exploitation',
+    #'type_materiel_récolte',
+    #'production_forestiere_exploitation',
     'pratique_cultures_fourrageres']
 
     if option == "Home":
@@ -642,7 +642,7 @@ def main():
         #'mois_previsionnel_recolte_CP':{1:'janvier',2:'fevrier',3:'mars',4:'avril',5:'mais',6:'juin',7:'juillet',8:'aout',9:'septembre',10:'octobre',11:'novembre',12:'decembre'},
         #'utilisation_matiere_org_avant_semis':{1:'Oui',2:'Non'},
         #'utilisation_matiere_miner_avant_semis':{1:'Oui',2:'Non'},
-        #'utilisation_produits_phytosanitaires':{1:'Oui',2:'Non'},
+        'utilisation_produits_phytosanitaires':{1:'Oui',2:'Non'},
         #'utilisation_residus_alimentation_animaux':{1:'Oui',2:'Non'},
         #'type_labour':{1:'Labour profond',2:'Labour peu profond',3:'Aucun labour'},
         #'type_couverture_sol_interculture':{1:'Solnu/Pasdecouverture',2:'Résidusdeplantes'},
