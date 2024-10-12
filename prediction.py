@@ -22,7 +22,7 @@ from PIL import Image
 import streamlit as st
 from io import BytesIO
 import base64
-@st.cache_data
+#@st.cache_data
 def wrangle(filepath):
     #read csv
     df= pd.read_csv(filepath,sep=';', na_values=["", " ", "  ", "   ", "    ", np.nan], low_memory=False)
@@ -289,7 +289,7 @@ results = pd.DataFrame({
 
 # Afficher les résultats
 print(results)
-@st.cache_resource
+#@st.cache_resource
 def get_model_and_scaler():
     scaler = StandardScaler()
     best_params = {
@@ -595,7 +595,7 @@ def main():
             16: 'Riz irrigué'
          },
         
-        'irrigation': {1:'Oui',2:'Non'},
+        #'irrigation': {1:'Oui',2:'Non'},
        
         'rotation_cultures':{1:'Oui',2:'Non'},
         'culture_principale_précédente_2020_2021': {
@@ -639,19 +639,19 @@ def main():
         'semaine_semis_CP':{1:'Semaine 1',2:'Semaine 2',3:'Semaine 3',4:'Semaine 4'},
    
         'etat_produit_CP':{1:'epis',2:'graine',3:'non-decortique',4:'fruit/legume',5:'calice seche',6:'feuille',7:'fibre de coton',8:'coton graine',9:'tubercule',10:'gousse'},
-        'mois_previsionnel_recolte_CP':{1:'janvier',2:'fevrier',3:'mars',4:'avril',5:'mais',6:'juin',7:'juillet',8:'aout',9:'septembre',10:'octobre',11:'novembre',12:'decembre'},
-        'utilisation_matiere_org_avant_semis':{1:'Oui',2:'Non'},
-        'utilisation_matiere_miner_avant_semis':{1:'Oui',2:'Non'},
-        'utilisation_produits_phytosanitaires':{1:'Oui',2:'Non'},
-        'utilisation_residus_alimentation_animaux':{1:'Oui',2:'Non'},
-        'type_labour':{1:'Labour profond',2:'Labour peu profond',3:'Aucun labour'},
-        'type_couverture_sol_interculture':{1:'Solnu/Pasdecouverture',2:'Résidusdeplantes'},
+        #'mois_previsionnel_recolte_CP':{1:'janvier',2:'fevrier',3:'mars',4:'avril',5:'mais',6:'juin',7:'juillet',8:'aout',9:'septembre',10:'octobre',11:'novembre',12:'decembre'},
+        #'utilisation_matiere_org_avant_semis':{1:'Oui',2:'Non'},
+        #'utilisation_matiere_miner_avant_semis':{1:'Oui',2:'Non'},
+        #'utilisation_produits_phytosanitaires':{1:'Oui',2:'Non'},
+        #'utilisation_residus_alimentation_animaux':{1:'Oui',2:'Non'},
+        #'type_labour':{1:'Labour profond',2:'Labour peu profond',3:'Aucun labour'},
+        #'type_couverture_sol_interculture':{1:'Solnu/Pasdecouverture',2:'Résidusdeplantes'},
         'type_installation':{1:'Digues/Diguettes',2:'Cordons pierreux',3:'Canaux de drainage',4:'Brise vent et haies',5:'Gabion',6:'Aucuneinstallation'},
         'type_materiel_preparation_sol':{1:'Manuel',2:'Attele',3:'Motorise'},
         'type_materiel_semis':{1:'Manuel',2:'Attele',3:'Motorise'},
         'type_materiel_entretien_sol':{1:'Manuel',2:'Attele',3:'Motorise'},
-        'type_materiel_récolte':{1:'Manuel',2:'Attele',3:'Motorise'},
-        'production_forestiere_exploitation':{1:'Oui',2:'Non'},
+        #'type_materiel_récolte':{1:'Manuel',2:'Attele',3:'Motorise'},
+        #'production_forestiere_exploitation':{1:'Oui',2:'Non'},
         'pratique_cultures_fourrageres':{1:'Oui',2:'Non'}
             
        
